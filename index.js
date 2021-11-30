@@ -1,12 +1,10 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 8000;
-
-app.post('/post', (req, res) => {
-    console.log('Connected to React');
-    // res.redirect('/');
+const io = require('socket.io')(3001, {
+    cors: {
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST'],
+    },
 });
 
-app.listen(port, () => {
-    console.log(`App is listening at http://localhost:${port}`);
-});
+io.on('connection', socket => {
+    console.log('backend connected');
+})
