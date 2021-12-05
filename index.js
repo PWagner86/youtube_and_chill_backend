@@ -8,3 +8,5 @@ const io = require('socket.io')(3001, {
 io.on('connection', socket => {
     console.log('backend connected');
 })
+
+io.on('click-event', socket => console.log('Play-Button clicked'));
